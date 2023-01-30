@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TasksService} from "../services/tasks.service";
 import {Task} from "../models/task.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-tasks-list',
@@ -8,8 +9,9 @@ import {Task} from "../models/task.model";
   styleUrls: ['./tasks-list.component.scss']
 })
 
-export class TasksListComponent implements OnInit {
+export class TasksListComponent implements OnInit, OnDestroy {
   constructor(private tasksService: TasksService) {}
+  subArr: Subscription[] | undefined;
   showAlsoCompleted: boolean = false;
   message: string = 'No Tasks at the moment, You can add one via the API or with the interface!';
   taskList: Task[] = [];
@@ -22,7 +24,8 @@ export class TasksListComponent implements OnInit {
     this.subscribeToReUpdate();
   }
   private getData() {
-    this.tasksService.getList().subscribe((res: any) => {
+   const sub = this.tasksService.getList().subscribe((res: any) => {
+      console.log(res);
       // get the data and assign it as is.
       this.taskList = res;
       // filter the data according to the default selected status of the toggle
@@ -32,24 +35,27 @@ export class TasksListComponent implements OnInit {
       this.tasksService.updateTasks(res);
       // update the shadow copy.
       this.subscribeToListChanges();
-    })
+    });
+   this.subArr?.push(sub);
   }
   private subscribeToListChanges() {
-    this.tasksService.listUpdateSub.subscribe((payload: any) => {
+    const sub = this.tasksService.listUpdateSub.subscribe((payload: any) => {
       if (payload) {
         this.taskListShadow = payload;
         console.log(this.taskListShadow);
       }
-    })
+    });
+    this.subArr?.push(sub);
   }
 
   // some actions from external components might require this component to get updated again.
   private subscribeToReUpdate() {
-    this.tasksService.filterSub.subscribe((obs: any) => {
+    const sub =this.tasksService.filterSub.subscribe((obs: any) => {
       if (obs) {
         this.getData();
       }
-    })
+    });
+    this.subArr?.push(sub);
   }
   private filterData(payload: Task[], forceEmit = false) {
     payload = payload.filter((task: Task) => {
@@ -86,4 +92,9 @@ export class TasksListComponent implements OnInit {
     this.filterData(this.taskList, true);
   }
 
+  ngOnDestroy() {
+    this.subArr?.forEach((sub:Subscription) => {
+      sub.unsubscribe();
+    })
+  }
 }

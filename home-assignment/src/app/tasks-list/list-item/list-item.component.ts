@@ -10,7 +10,7 @@ import {AppService} from "../../services/app.service";
 export class ListItemComponent {
 @Input('taskData') taskData: Task | undefined;
   constructor(private appService: AppService) {}
-  openEditMode() {
+  openEditMode(): void {
     this.appService.updateFormState({state:true, data: this.taskData});
 
   }

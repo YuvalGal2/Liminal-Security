@@ -7,7 +7,6 @@ import {BehaviorSubject} from "rxjs";
 export class AppService {
   formObs = new BehaviorSubject({state:false,data:null});
   constructor() { }
-
   updateFormState(stateObject: any) {
     this.formObs.next(stateObject);
   }
