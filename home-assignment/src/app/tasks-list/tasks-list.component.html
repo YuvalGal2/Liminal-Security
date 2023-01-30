@@ -1,1 +1,3 @@
-<p>tasks-list works!</p>
+<app-filters></app-filters>
+<app-list-message *ngIf="taskList.length === 0" [listMessage]="message"></app-list-message>
+<app-list-item *ngFor="let listItem of taskList" [taskData]="listItem"></app-list-item>

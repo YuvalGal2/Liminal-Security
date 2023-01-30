@@ -1,1 +1,11 @@
-<p>list-item works!</p>
+<div class="task">
+  <div class="task-content-wrapper">
+   <div class="title">Task: <span>{{taskData?.title}}</span></div>
+   <div class="assignee">Assignee:<span>{{taskData?.assignee}}</span></div>
+   <div class="status">Status: <span>{{taskData?.status}}</span></div>
+   <div class="timestamp">Created at: <span>{{taskData?.created}}</span></div>
+  </div>
+  <div class="task-control">
+    <app-item-control [itemData]="taskData"></app-item-control>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@import "../../../var";
+.tasks-message  {
+  margin:20px 0px;
+  background-color:$border-color;
+  padding:20px;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+}
