@@ -1,0 +1,16 @@
+@import "../../../var";
+.add-task-button {
+  cursor: pointer;
+  margin-top:40px;
+  font-weight: 300;
+  font-size: 3rem;
+  height:40px;
+  width:42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:$border-color;
+  padding:5px;
+  background-color: $dynamic-color;
+  border-radius: 100%;
+}

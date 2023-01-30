@@ -13,10 +13,9 @@ export class ListItemControlComponent {
 
   @Input('itemData') itemData: any;
   softDeleteItem() {
-    console.log('got here');
     this.tasksService.closeTask(this.itemData).subscribe((res: any) => {
       if (res) {
-        this.tasksService.updateTasks(res);
+        this.tasksService.updateTasks(res,true);
       }
     })
   }

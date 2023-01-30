@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Task} from "../../models/task.model";
+import {AppService} from "../../services/app.service";
 
 @Component({
   selector: 'app-list-item',
@@ -8,4 +9,9 @@ import {Task} from "../../models/task.model";
 })
 export class ListItemComponent {
 @Input('taskData') taskData: Task | undefined;
+  constructor(private appService: AppService) {}
+  openEditMode() {
+    this.appService.updateFormState({state:true, data: this.taskData});
+
+  }
 }

@@ -1,0 +1,35 @@
+@import "../../var";
+.item-form {
+  margin-top:40px;
+  width:300px;
+  display: flex;
+  flex-direction: column;
+  background-color: $border-color;
+  padding:20px;
+}
+
+input {
+  height: 40px;
+  margin:10px 0px;
+  font-size:1.2rem;
+  padding:5px;
+}
+
+button {
+  width:48%;
+  height:30px;
+  background-color: $dynamic-color;
+  color:$border-color;
+  outline: 0px;
+  border:0px;
+  margin:1%
+}
+
+
+.btn-green {
+  background-color: green;;
+}
+
+.btn-red {
+  background-color: red;;
+}

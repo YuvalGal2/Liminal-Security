@@ -2,4 +2,8 @@
   <div class="tasks-list-wrapper">
     <app-tasks-list></app-tasks-list>
   </div>
+  <div class="add-task">
+    <app-add-item-button></app-add-item-button>
+    <item-form *ngIf="form.state" [data]="form.data"></item-form>
+  </div>
 </div>

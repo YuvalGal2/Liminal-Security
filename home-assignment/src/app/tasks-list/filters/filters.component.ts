@@ -10,4 +10,7 @@ export class FiltersComponent {
   onToggleChanged(status:string) {
     this.emitFilterChange.emit(['toggle',status]);
   }
+  onSearchChanged(search:string) {
+    this.emitFilterChange.emit(["search", search]);
+  }
 }

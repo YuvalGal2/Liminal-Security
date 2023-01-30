@@ -1,3 +1,4 @@
 <div class="controls">
-  <div class="delete" (click)="softDeleteItem()">X</div>
+  <div class="delete" (click)="softDeleteItem()" *ngIf="itemData.status !== 'Done'">X</div>
+  <div class="completed" *ngIf="itemData.status === 'Done'">✓</div>
 </div>

@@ -1,0 +1,15 @@
+<form class="item-form"[formGroup]="form">
+  <input id="title" type="text" formControlName="title" placeholder="Title"   >
+  <input id="assignee" type="text" formControlName="assignee" placeholder="Assignee">
+  <mat-form-field appearance="fill" >
+    <mat-label>{{selectedOption}}</mat-label>
+    <mat-select [(value)]="selectedOption" formControlName="status">
+      <mat-option value="In Progress" selected>In Progress</mat-option>
+      <mat-option value="Done">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="buttons">
+    <button class="btn-green" (click)="saveFormData()">Save</button>
+    <button class="btn-red" (click)="closeForm()">Close</button>
+  </div>
+</form>

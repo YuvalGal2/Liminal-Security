@@ -13,8 +13,10 @@ import { SearchComponent } from './tasks-list/filters/search/search.component';
 import { ToggleComponent } from './tasks-list/filters/toggle/toggle.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {FormsModule} from "@angular/forms";
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ItemFormComponent } from './item-form/item-form.component';
+import { AddItemButtonComponent } from './tasks-list/add-item-button/add-item-button.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import {FormsModule} from "@angular/forms";
     ListItemControlComponent,
     FiltersComponent,
     SearchComponent,
-    ToggleComponent
+    ToggleComponent,
+    ItemFormComponent,
+    AddItemButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import {FormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     FormsModule,
     MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
